@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Get to Know Joel";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4 fw-bold mb-4">Get to Know Joel</h1>
+
+    <p class="lead mb-3">
+        Check out Joel’s performances and his weekly podcast!
+    </p>
+
+    <div class="mb-3">
+        <a href="https://www.qwcomedy.com/" target="_blank" class="btn btn-outline-primary btn-lg mx-2">
+            Quick Wits Comedy
+        </a>
+
+        <a href="https://baconsale.com/" target="_blank" class="btn btn-outline-success btn-lg mx-2">
+            Baconsale Podcast
+        </a>
+    </div>
+
+    <div class="mb-4">
+        <a href="https://baconsale.com/" target="_blank">
+            <img src="~/img/baconsalekate.jpg" class="img-fluid rounded shadow" style="max-height: 400px;" />
+        </a>
+    </div>
+
+    <a asp-controller="Home" asp-action="AddMovie" class="btn btn-primary btn-lg">
+        Click here to add a movie!
+    </a>
+</div>
