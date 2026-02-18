@@ -1,4 +1,4 @@
-﻿@model Mission6_Wong.Models.Movies
+﻿@model Mission07_Wong.Models.Movie
 
 @{
     ViewData["Title"] = "Add Movie";
@@ -14,13 +14,7 @@
         </div>
     }
 
-    <form asp-action="AddMovie" asp-controller="Home" method="post" class="mx-auto" style="max-width: 500px;">
-        <div class="mb-3">
-            <label asp-for="Category" class="form-label"></label>
-            <input asp-for="Category" class="form-control" />
-            <span asp-validation-for="Category" class="text-danger"></span>
-        </div>
-
+    <form asp-action="AddMovie" method="post" class="mx-auto" style="max-width: 500px;">
         <div class="mb-3">
             <label asp-for="Title" class="form-label"></label>
             <input asp-for="Title" class="form-control" />
@@ -34,41 +28,35 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="Director" class="form-label"></label>
-            <input asp-for="Director" class="form-control" />
-            <span asp-validation-for="Director" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="Rating" class="form-label"></label>
-            <select asp-for="Rating" class="form-select">
-                <option value="">--Select--</option>
-                <option>G</option>
-                <option>PG</option>
-                <option>PG-13</option>
-                <option>R</option>
-            </select>
-            <span asp-validation-for="Rating" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
             <label asp-for="Edited" class="form-label"></label>
             <select asp-for="Edited" class="form-select">
                 <option value="">--Select--</option>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>
+            <span asp-validation-for="Edited" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="LentTo" class="form-label"></label>
-            <input asp-for="LentTo" class="form-control" />
+            <label asp-for="CopiedToPlex" class="form-label"></label>
+            <select asp-for="CopiedToPlex" class="form-select">
+                <option value="">--Select--</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Notes" class="form-label"></label>
-            <input asp-for="Notes" maxlength="25" class="form-control" />
-            <span asp-validation-for="Notes" class="text-danger"></span>
+            <label asp-for="CategoryId" class="form-label">Categories</label>
+            <select asp-for="CategoryId" class="form-select">
+                <option value="">--Select Category--</option>
+                @foreach (Category c in ViewBag.categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg w-100">Add Movie</button>

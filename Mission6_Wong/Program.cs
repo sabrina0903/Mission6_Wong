@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Mission07_Wong.Models;
 using Mission6_Wong.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ builder.Services.AddControllersWithViews();
 
 // Register your DbContext
 builder.Services.AddDbContext<MovieContext>(options =>
-    options.UseSqlite(builder.Configuration["ConnectionStrings:MovieConnection"])); 
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
+
 
 var app = builder.Build();
 

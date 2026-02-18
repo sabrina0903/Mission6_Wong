@@ -1,0 +1,58 @@
+﻿@model Mission07_Wong.Models.Movie
+
+<h2 class="text-center mb-4">Edit Movie</h2>
+
+<form asp-action="Edit" method="post" class="mx-auto" style="max-width: 500px;">
+    <input type="hidden" asp-for="MovieId" /> <!-- Hidden ID -->
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Year" class="form-label"></label>
+        <input asp-for="Year" type="number" min="1888" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Edited" class="form-label"></label>
+        <select asp-for="Edited" class="form-select">
+            <option value="true" selected="@Model.Edited">Yes</option>
+            <option value="false" selected="@(!Model.Edited)">No</option>
+        </select>
+        <span asp-validation-for="Edited" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CopiedToPlex" class="form-label"></label>
+        <select asp-for="CopiedToPlex" class="form-select">
+            <option value="true" selected="@Model.CopiedToPlex">Yes</option>
+            <option value="false" selected="@(!Model.CopiedToPlex)">No</option>
+        </select>
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Category</label>
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">--Select Category--</option>
+            @foreach (var c in ViewBag.categories)
+            {
+                <option value="@c.CategoryId" selected="@(c.CategoryId == Model.CategoryId)">
+                    @c.CategoryName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Save Changes</button>
+    <a asp-action="MovieList" class="btn btn-secondary w-100 mt-2">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
